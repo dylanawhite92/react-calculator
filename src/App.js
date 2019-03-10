@@ -13,11 +13,14 @@ class App extends Component {
 
   render() {
     return (
-      // <div className="App">
-      //   <Display data= {this.state.operations}/>
-      // </div>
+      <div className="App">
+        <Display data= {this.state.operations}/>
+        <Buttons>
+          
+        </Buttons>
+      </div>
 
-      <Logo />
+      // <Logo />
     );
   }
 }
