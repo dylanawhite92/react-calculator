@@ -12,10 +12,12 @@ class App extends Component {
     };
   };
 
+  // Concatenate input state with clicked button
   handleInput = val => {
     this.setState({ input: this.state.input + val });
   };
 
+  // Event handler for completing arithmetic operations using mathjs
   handleEqual = () => {
     this.setState({ input: math.eval(this.state.input) });  
   };
