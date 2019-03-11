@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import "./Button.css";
 
-class Button extends Component {
-    render() {
-        return(
-            <div
-                onClick={this.props.onClick}
-                className="Button"
-                data-size={this.props.size}
-                data-value={this.props.value}
-            >
-                {this.props.label}
-            </div>
-        );
-    };
-};
+const isOperator = val => {
+    return !isNaN(val) || val === "." || val === "=";
+}
 
-export default Button;
+export const Button = props => (
+    <div 
+        className={`button-wrapper ${
+            isOperator(props.children) ? null: "operator"
+        }`}
+    >
+        {props.children}
+    </div>
+);
