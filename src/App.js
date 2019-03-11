@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import "./App.css"
 import { Button, Input, ClearButton } from "./components/index"
+import * as math from "mathjs";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      input: "0"
-    }
-  }
+      input: ""
+    };
+  };
 
   handleInput = val => {
     this.setState({ input: this.state.input + val });
-  }
+  };
+
+  handleEqual = () => {
+    this.setState({ input: math.eval(this.state.input) });  
+  };
 
   render() {
     return (
@@ -30,7 +35,7 @@ class App extends Component {
             <Button handleClick={this.handleInput}>4</Button>
             <Button handleClick={this.handleInput}>5</Button>
             <Button handleClick={this.handleInput}>6</Button>
-            <Button handleClick={this.handleInput}>X</Button>
+            <Button handleClick={this.handleInput}>*</Button>
           </div>
           <div className="row">
             <Button handleClick={this.handleInput}>1</Button>
@@ -41,11 +46,11 @@ class App extends Component {
           <div className="row">
             <Button handleClick={this.handleInput}>.</Button>
             <Button handleClick={this.handleInput}>0</Button>
-            <Button handleClick={this.handleInput}>=</Button>
+            <Button handleClick={() => this.handleEqual()}>=</Button>
             <Button handleClick={this.handleInput}>-</Button>
           </div>
           <div className="row">
-            <ClearButton handleClear={() => this.setState({input: "0"})}>Clear</ClearButton>
+            <ClearButton handleClear={() => this.setState({input: ""})}>Clear</ClearButton>
           </div>
         </div>
       </div>
